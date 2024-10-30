@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Caranguejo Tabaiares</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Biblioteca Caranguejo Tabaiares</title>
+        <link rel="icon" href="https://wikifavelas.com.br/images/d/d6/Logo_da_Bibliotec.jpg" type="image/jpeg">
+        <!-- Seus outros estilos e scripts -->  
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #ff4500;
+            padding: 10px;
+            color: white;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+            margin-left: 20px;
+        }
+        header img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        nav button, .back-button, .submit-button, .view-story-button {
+            background-color: #ff4500;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover, .back-button:hover, .submit-button:hover, .view-story-button:hover {
+            background-color: #ff6700;
+        }
+        /* Conteúdo Principal */
+        #mainPage {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Estilos da Página Sobre */
+        #sobre {
+            margin: 30px;
+            text-align: center;
+        }
+        #sobre h2 {
+            color: #ff4500;
+        }
+        #sobre p {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        /* Estilos da Página de Atividades */
+        #atividades {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #atividades label {
+            font-size: 20px;
+        }
+        #atividades input {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 15px;
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+        #atividades button {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 15px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #atividades button:hover {
+            background-color: #ff6700;
+        }
+        /* Estilo das Imagens de Atividades */
+        .gallery {
+            display: grid;
+            gap: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Configuração para computadores: 10x10 */
+        @media screen and (min-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(10, 1fr);
+            }
+        }
+
+        /* Configuração para dispositivos móveis: 4x20 */
+        @media screen and (max-width: 767px) {
+            .gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            filter: brightness(0); /* Imagem preta e branca */
+            transition: filter 0.3s;
+        }
+
+        .gallery img:hover {
+            filter: brightness(1); /* Retorna à cor original ao passar o mouse */
+        }
+
+        /* Página Ampliada da Imagem */
+        #story {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #story img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: brightness(1); /* Imagem em cor quando selecionada */
+        }
+        #story textarea {
+            width: 80%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        /* Página de Atividades Armazenadas */
+        #viewActivitiesPage {
+            overflow-y: auto;
+            max-height: calc(100vh - 180px);
+            margin: 0 15px;
+        }
+        .activity-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .activity-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .activity-item p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Página Visualizar História */
+        #viewStoryPage {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #viewStoryPage img {
+            width: 400px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        #viewStoryPage p {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Ajuste para a rolagem da página de Atividades Realizadas */
+        #activitiesList {
+            display: grid;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        /* Ajuste para impedir rolagem lateral e garantir que role verticalmente */
+        @media screen and (min-width: 768px) {
+            #activitiesList {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        @media screen and (max-width: 767px) {
+            #activitiesList {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Biblioteca Caranguejo Tabaiares</h1>
+        <img src="https://wikifavelas.com.br/images/d/d6/Logo_da_Bibliotec.jpg" alt="Logo da Biblioteca" style="width: 100px; height: auto; margin-right: 20px;">
+    </header>
+
+    <!-- Botões de Navegação -->
+    <nav id="navigation">
+        <button onclick="showPage('sobre')">Sobre</button>
+        <button onclick="showPage('atividades')">Atividades</button>
+        <button onclick="showActivities()">Atividades Realizadas</button>
+    </nav>
+
+    <!-- Página Principal -->
+    <div id="mainPage">
+        <h2>Bem-vindo à Biblioteca Caranguejo Tabaiares</h2>
+        <p>Escolha uma das opções acima para saber mais sobre nós ou participar das atividades!</p>
+    </div>
+
+    <!-- Página Sobre -->
+<div id="sobre" class="hidden">
+    <h2>Sobre nossa biblioteca</h2>
+    <p>
+        No dia 11 de outubro de 2005 foi inaugurada a Biblioteca Comunitária Caranguejo Tabaiares, na favela Caranguejo Tabaiares em Recife, com um acervo inicial de 800 livros, doados pela Faculdade de Ciências da Administração de Pernambuco (FCAP), a Associação Cultura Planeta, além de outras organizações como ETAPAS, Centro Josué de Castro, FASE, Escola Maria Goretti, incluindo moradores da comunidade. A iniciativa partiu de Cleonice da Silva e Reginaldo Pereira (lideranças comunitárias) e um grupo de moradores, jovens em sua maioria, residentes na comunidade, por entenderem que a biblioteca seria muito importante para facilitar o acesso ao livro, despertar o interesse pela cultura letrada, desenvolver o prazer de ler e apoiar as pesquisas escolares dos estudantes.
+    </p>
+    <p>
+        Esse processo de instalação da biblioteca comunitária vem representando uma oportunidade dos jovens exercitarem a experiência da gestão de um espaço coletivo, que oferece um serviço de grande relevância para a comunidade. Destaca-se nesse processo a capacidade dos jovens mobilizarem apoio e a colaboração de várias entidades e indivíduos. Na prática, foi se consolidando uma verdadeira Rede Solidária de Amigos da Biblioteca. Desde a fundação, ficou marcado o envolvimento dos profissionais da FCAP na orientação, organização do acervo e no gerenciamento da biblioteca, e da Associação Cultura Planeta, com o aluguel do espaço.
+    </p>
+    <p>
+        A Biblioteca é comandada por jovens que acreditam na educação como fonte de conhecimento social e no momento encontra-se captando recursos para finalização da nova sede, a ser compartilhada com o Clube dos Idosos, numa área maior, visando triplicar o número de atendimentos à comunidade.
+    </p>
+    <p style="text-align: center; margin-top: 40px;">
+        Para mais informações: <br>
+        Telefone: (81) 3077.2535 <br>
+        Email: <a href="mailto:bibliotecacomunitariact@gmail.com">bibliotecacomunitariact@gmail.com</a><br>
+        Instagram: <a href="https://www.instagram.com/biblioteca.cct/" target="_blank">@biblioteca.cct</a>
+    </p>
+ </div>
+ 
+ 
+
+    <!-- Página Atividades -->
+    <div id="atividades" class="hidden">
+        <h2>Atividades</h2>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" placeholder="Digite seu nome" required><br>
+        <button class="submit-button" onclick="entrar()">Entrar</button>
+    </div>
+
+    <!-- Galeria de Imagens na Página de Atividades -->
+<!-- Página com Galeria de Imagens -->
+<div id="galleryPage" class="hidden">
+    <h2>Escolha uma imagem</h2>
+    <div class="gallery" id="gallery"></div>
+    <button class="back-button" onclick="showPage('main')">Voltar</button>
+</div>
+
+<script>
+    // Função para carregar a galeria de imagens
+    function loadGallery() {
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = ''; // Limpa a galeria antes de carregar
+        for (let i = 1; i <= 100; i++) { // Ajuste o número conforme necessário
+            const img = document.createElement('img');
+            img.src = imagens/imagem${i}.jpg; // Caminho para cada imagem
+            img.alt = Imagem ${i};
+            img.onclick = () => selectImage(img.src);
+            gallery.appendChild(img);
+        }
+    }
+</script>
+
+    <!-- Página Ampliada para Escrever História -->
+    <div id="storyPage" class="hidden">
+        <h2>Escreva sua história</h2>
+        <div id="story">
+            <img id="selectedImage" src="" alt="Imagem Selecionada">
+            <textarea id="storyText" placeholder="Escreva sua história aqui..."></textarea><br>
+            <button class="submit-button" onclick="saveStory()">Concluir</button>
+        </div>
+        <button class="back-button" onclick="showPage('galleryPage')">Voltar</button>
+    </div>
+
+    <!-- Página de Atividades Armazenadas -->
+    <div id="viewActivitiesPage" class="hidden">
+        <h2>Atividades Produzidas</h2>
+        <div id="activitiesList"></div>
+    </div>
+
+    <!-- Página Visualizar História -->
+    <div id="viewStoryPage" class="hidden">
+        <h2>História</h2>
+        <img id="storyImage" src="" alt="Imagem da História"><br>
+        <p id="storyName"></p>
+        <p id="storyContent"></p>
+        <button class="back-button" onclick="showActivities()">Voltar</button>
+    </div>
+
+    <script>
+        // Função para mostrar a página correspondente
+        function showPage(pageId) {
+            const pages = ['mainPage', 'sobre', 'atividades', 'galleryPage', 'storyPage', 'viewActivitiesPage', 'viewStoryPage'];
+            pages.forEach(page => document.getElementById(page).classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        // Função para capturar o nome do usuário
+        let userName = '';
+        let selectedImage = '';
+
+        function entrar() {
+            const nomeInput = document.getElementById('nome');
+            if (nomeInput.value.trim() !== "") {
+                userName = nomeInput.value;
+                showPage('galleryPage');
+                loadGallery();
+            } else {
+                alert('Por favor, digite seu nome.');
+            }
+        }
+
+        // Função para carregar a galeria de imagens
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Limpa a galeria antes de carregar
+            for (let i = 1; i <= 100; i++) {
+                const img = document.createElement('img');
+                img.src = `imagens/imagem${i}.jpg`; // Ajuste o caminho conforme necessário
+                img.alt = `Imagem ${i}`;
+                img.onclick = () => selectImage(img.src);
+                gallery.appendChild(img);
+            }
+        }
+
+        // Função para selecionar uma imagem
+        function selectImage(imageSrc) {
+            selectedImage = imageSrc;
+            document.getElementById('selectedImage').src = imageSrc;
+            showPage('storyPage');
+        }
+
+        // Função para salvar a história
+        function saveStory() {
+            const storyText = document.getElementById('storyText').value;
+            if (storyText.length > 0) {
+                const activity = {
+                    image: selectedImage,
+                    name: userName,
+                    story: storyText
+                };
+
+                let activities = JSON.parse(localStorage.getItem('activities')) || [];
+                activities.push(activity);
+                localStorage.setItem('activities', JSON.stringify(activities));
+
+                alert('História salva com sucesso!');
+                showPage('mainPage');
+            } else {
+                alert('Por favor, escreva sua história.');
+            }
+        }
+
+        // Função para mostrar atividades realizadas
+        function showActivities() {
+            const activitiesList = document.getElementById('activitiesList');
+            activitiesList.innerHTML = '';
+            const activities = JSON.parse(localStorage.getItem('activities')) || [];
+            activities.forEach(activity => {
+                const div = document.createElement('div');
+                div.className = 'activity-item';
+                const img = document.createElement('img');
+                img.src = activity.image;
+                const name = document.createElement('p');
+                name.textContent = activity.name;
+                const viewButton = document.createElement('button');
+                viewButton.textContent = 'Ver História';
+                viewButton.className = 'view-story-button';
+                viewButton.onclick = () => viewStory(activity);
+
+                div.appendChild(img);
+                div.appendChild(name);
+                div.appendChild(viewButton);
+                activitiesList.appendChild(div);
+            });
+            showPage('viewActivitiesPage');
+        }
+
+        // Função para ver a história completa
+        function viewStory(activity) {
+            document.getElementById('storyImage').src = activity.image;
+            document.getElementById('storyName').textContent = activity.name;
+            document.getElementById('storyContent').textContent = activity.story;
+            showPage('viewStoryPage');
+        }
+    </script>
+</body>
+</html>
