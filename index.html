@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Caranguejo Tabaiares</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Biblioteca Caranguejo Tabaiares</title>
-        <link rel="icon" href="https://wikifavelas.com.br/images/d/d6/Logo_da_Bibliotec.jpg" type="image/jpeg">
-        <link rel="stylesheet" href="style.css/style.css">    
+    <link rel="icon" href="https://wikifavelas.com.br/images/d/d6/Logo_da_Bibliotec.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 
@@ -32,26 +29,17 @@
     </div>
 
     <!-- Página Sobre -->
-<div id="sobre" class="hidden">
-    <h2>Sobre nossa biblioteca</h2>
-    <p>
-        No dia 11 de outubro de 2005 foi inaugurada a Biblioteca Comunitária Caranguejo Tabaiares, na favela Caranguejo Tabaiares em Recife, com um acervo inicial de 800 livros, doados pela Faculdade de Ciências da Administração de Pernambuco (FCAP), a Associação Cultura Planeta, além de outras organizações como ETAPAS, Centro Josué de Castro, FASE, Escola Maria Goretti, incluindo moradores da comunidade. A iniciativa partiu de Cleonice da Silva e Reginaldo Pereira (lideranças comunitárias) e um grupo de moradores, jovens em sua maioria, residentes na comunidade, por entenderem que a biblioteca seria muito importante para facilitar o acesso ao livro, despertar o interesse pela cultura letrada, desenvolver o prazer de ler e apoiar as pesquisas escolares dos estudantes.
-    </p>
-    <p>
-        Esse processo de instalação da biblioteca comunitária vem representando uma oportunidade dos jovens exercitarem a experiência da gestão de um espaço coletivo, que oferece um serviço de grande relevância para a comunidade. Destaca-se nesse processo a capacidade dos jovens mobilizarem apoio e a colaboração de várias entidades e indivíduos. Na prática, foi se consolidando uma verdadeira Rede Solidária de Amigos da Biblioteca. Desde a fundação, ficou marcado o envolvimento dos profissionais da FCAP na orientação, organização do acervo e no gerenciamento da biblioteca, e da Associação Cultura Planeta, com o aluguel do espaço.
-    </p>
-    <p>
-        A Biblioteca é comandada por jovens que acreditam na educação como fonte de conhecimento social e no momento encontra-se captando recursos para finalização da nova sede, a ser compartilhada com o Clube dos Idosos, numa área maior, visando triplicar o número de atendimentos à comunidade.
-    </p>
-    <p style="text-align: center; margin-top: 40px;">
-        Para mais informações: <br>
-        Telefone: (81) 3077.2535 <br>
-        Email: <a href="mailto:bibliotecacomunitariact@gmail.com">bibliotecacomunitariact@gmail.com</a><br>
-        Instagram: <a href="https://www.instagram.com/biblioteca.cct/" target="_blank">@biblioteca.cct</a>
-    </p>
- </div>
- 
- 
+    <div id="sobre" class="hidden">
+        <h2>Sobre nossa biblioteca</h2>
+        <p> No dia 11 de outubro de 2005 foi inaugurada a Biblioteca Comunitária Caranguejo Tabaiares...</p>
+        <!-- Informações de contato -->
+        <p style="text-align: center; margin-top: 40px;">
+            Para mais informações: <br>
+            Telefone: (81) 3077.2535 <br>
+            Email: <a href="mailto:bibliotecacomunitariact@gmail.com">bibliotecacomunitariact@gmail.com</a><br>
+            Instagram: <a href="https://www.instagram.com/biblioteca.cct/" target="_blank">@biblioteca.cct</a>
+        </p>
+    </div>
 
     <!-- Página Atividades -->
     <div id="atividades" class="hidden">
@@ -61,59 +49,21 @@
         <button class="submit-button" onclick="entrar()">Entrar</button>
     </div>
 
-    <!-- Galeria de Imagens na Página de Atividades -->
-<!-- Página com Galeria de Imagens -->
-<div id="galleryPage" class="hidden">
-    <h2>Escolha uma imagem</h2>
-    <div class="gallery" id="gallery"></div>
-    <button class="back-button" onclick="showPage('main')">Voltar</button>
-</div>
+    <!-- Página com Galeria de Imagens -->
+    <div id="galleryPage" class="hidden">
+        <h2>Escolha uma imagem</h2>
+        <div class="gallery" id="gallery"></div>
+        <button class="back-button" onclick="showPage('mainPage')">Voltar</button>
+    </div>
 
-<div id="activitiesPage" class="hidden">
-    <h2>Atividades Realizadas</h2>
-    <div id="activityList"></div>
-    <button class="back-button" onclick="showPage('mainPage')">Voltar</button>
-</div>
+    <!-- Página de Atividades Realizadas -->
+    <div id="activitiesPage" class="hidden">
+        <h2>Atividades Realizadas</h2>
+        <div id="activityList"></div>
+        <button class="back-button" onclick="showPage('mainPage')">Voltar</button>
+    </div>
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAxoQOauQ2fjBCWUNI6AJ36SQYD3PpTQPI",
-    authDomain: "caranguejo-f379f.firebaseapp.com",
-    projectId: "caranguejo-f379f",
-    storageBucket: "caranguejo-f379f.firebasestorage.app",
-    messagingSenderId: "997219137628",
-    appId: "1:997219137628:web:6ff6db665ca549e6d00e99",
-    measurementId: "G-4C9LWELS2S"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-    
-// Função para carregar a galeria de imagens
-    function loadGallery() {
-        const gallery = document.getElementById('gallery');
-        gallery.innerHTML = ''; // Limpa a galeria antes de carregar
-        for (let i = 1; i <= 100; i++) { // Ajuste o número conforme necessário
-            const img = document.createElement('img');
-            img.src = imagens/imagem${i}.jpg; // Caminho para cada imagem
-            img.alt = Imagem ${i};
-            img.onclick = () => selectImage(img.src);
-            gallery.appendChild(img);
-        }
-    }
-</script>
-
-    <!-- Página Ampliada para Escrever História -->
+    <!-- Página para Escrever História -->
     <div id="storyPage" class="hidden">
         <h2>Escreva sua história</h2>
         <div id="story">
@@ -124,13 +74,7 @@
         <button class="back-button" onclick="showPage('galleryPage')">Voltar</button>
     </div>
 
-    <!-- Página de Atividades Armazenadas -->
-    <div id="viewActivitiesPage" class="hidden">
-        <h2>Atividades Produzidas</h2>
-        <div id="activitiesList"></div>
-    </div>
-
-    <!-- Página Visualizar História -->
+    <!-- Página para Visualizar História -->
     <div id="viewStoryPage" class="hidden">
         <h2>História</h2>
         <img id="storyImage" src="" alt="Imagem da História"><br>
@@ -139,15 +83,31 @@
         <button class="back-button" onclick="showActivities()">Voltar</button>
     </div>
 
-    <script>
-        // Função para mostrar a página correspondente
+    <!-- Scripts de Firebase e JavaScript -->
+    <script type="module">
+        // Firebase SDK import
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "API_KEY",
+            authDomain: "caranguejo-f379f.firebaseapp.com",
+            projectId: "caranguejo-f379f",
+            storageBucket: "caranguejo-f379f.appspot.com",
+            messagingSenderId: "997219137628",
+            appId: "APP_ID",
+            measurementId: "G-4C9LWELS2S"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Função para exibir página específica
         function showPage(pageId) {
-            const pages = ['mainPage', 'sobre', 'atividades', 'galleryPage', 'storyPage', 'viewActivitiesPage', 'viewStoryPage'];
+            const pages = ['mainPage', 'sobre', 'atividades', 'galleryPage', 'storyPage', 'activitiesPage', 'viewStoryPage'];
             pages.forEach(page => document.getElementById(page).classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
         }
 
-        // Função para capturar o nome do usuário
+        // Função para entrar e capturar nome do usuário
         let userName = '';
         let selectedImage = '';
 
@@ -162,126 +122,71 @@
             }
         }
 
-
-        // Função para carregar a galeria de imagens
-        <script>
-            function loadGallery() {
-                const gallery = document.getElementById('gallery');
-                gallery.innerHTML = ''; // Limpa a galeria antes de carregar
-                for (let i = 1; i <= 100; i++) {
-                    const img = document.createElement('img');
-                    img.src = `imagens/imagem${i}.jpg`; // Ajuste o caminho conforme necessário
-                    img.alt = `Imagem ${i}`;
-                    img.onclick = () => selectImage(img.src);
-                    gallery.appendChild(img);
-                }
-            }
-
-        // Função para selecionar uma imagem
-            function selectImage(imageSrc) {
-                selectedImage = imageSrc;
-                document.getElementById('selectedImage').src = imageSrc;
-                showPage('storyPage');
-            }
-
-        // Função para salvar a história
-            function saveStory() {
-                const storyText = document.getElementById('storyText').value;
-                if (storyText.length > 0) {
-                    const activity = {
-                        image: selectedImage,
-                        name: userName,
-                        story: storyText
-                    };
-
-                    let activities = JSON.parse(localStorage.getItem('activities')) || [];
-                    activities.push(activity);
-                    localStorage.setItem('activities', JSON.stringify(activities));
-
-                    alert('História salva com sucesso!');
-                    showPage('mainPage');
-                } else {
-                    alert('Por favor, escreva sua história.');
-                }
-            }
-
-        // Função para mostrar atividades realizadas
-            function showActivities() {
-                const activitiesList = document.getElementById('activitiesList');
-                activitiesList.innerHTML = '';
-                const activities = JSON.parse(localStorage.getItem('activities')) || [];
-                activities.forEach(activity => {
-                    const div = document.createElement('div');
-                    div.className = 'activity-item';
-                    const img = document.createElement('img');
-                    img.src = activity.image;
-                    const name = document.createElement('p');
-                    name.textContent = activity.name;
-                    const viewButton = document.createElement('button');
-                    viewButton.textContent = 'Ver História';
-                    viewButton.className = 'view-story-button';
-                    viewButton.onclick = () => viewStory(activity);
-
-                    div.appendChild(img);
-                    div.appendChild(name);
-                    div.appendChild(viewButton);
-                    activitiesList.appendChild(div);
-                });
-                showPage('viewActivitiesPage');
-            }
-
-        // Função para ver a história completa
-            function viewStory(activity) {
-                document.getElementById('storyImage').src = activity.image;
-                document.getElementById('storyName').textContent = activity.name;
-                document.getElementById('storyContent').textContent = activity.story;
-                showPage('viewStoryPage');
-            }
-    async function saveActivity(imageId) {
-        const name = document.getElementById("nome").value;
-        const story = prompt("Escreva sua história para a imagem " + imageId + ":");
-        if (story) {
-            try {
-                await db.collection("activities").add({
-                    name: name,
-                    imageId: imageId,
-                    story: story,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                alert("Atividade salva com sucesso!");
-            } catch (error) {
-                console.error("Erro ao salvar atividade:", error);
+        // Função para carregar galeria de imagens
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            for (let i = 1; i <= 100; i++) {
+                const img = document.createElement('img');
+                img.src = `imagens/imagem${i}.jpg`; // Caminho correto da imagem
+                img.alt = `Imagem ${i}`;
+                img.onclick = () => selectImage(img.src);
+                gallery.appendChild(img);
             }
         }
-    }
 
-    async function showActivities() {
-        showPage("activitiesPage");
-        const activityList = document.getElementById("activityList");
-        activityList.innerHTML = "";
+        // Função para selecionar imagem
+        function selectImage(imageSrc) {
+            selectedImage = imageSrc;
+            document.getElementById('selectedImage').src = imageSrc;
+            showPage('storyPage');
+        }
 
-        try {
-            const snapshot = await db.collection("activities").orderBy("timestamp", "desc").get();
-            if (snapshot.empty) {
-                activityList.innerHTML = "<p>Nenhuma atividade realizada.</p>";
-                return;
+        // Função para salvar história
+        function saveStory() {
+            const storyText = document.getElementById('storyText').value;
+            if (storyText.trim().length > 0) {
+                const activity = {
+                    image: selectedImage,
+                    name: userName,
+                    story: storyText
+                };
+                let activities = JSON.parse(localStorage.getItem('activities')) || [];
+                activities.push(activity);
+                localStorage.setItem('activities', JSON.stringify(activities));
+                alert('História salva com sucesso!');
+                showPage('mainPage');
+            } else {
+                alert('Por favor, escreva sua história.');
             }
+        }
 
-            snapshot.forEach(doc => {
-                const activity = doc.data();
-                const item = document.createElement("div");
-                item.classList.add("activity-item");
-                item.innerHTML = `
-                    <p><strong>${activity.name}</strong> - Imagem ${activity.imageId}</p>
-                    <p>${activity.story}</p>
-                `;
-                activityList.appendChild(item);
+        // Função para exibir atividades
+        function showActivities() {
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = '';
+            const activities = JSON.parse(localStorage.getItem('activities')) || [];
+            activities.forEach(activity => {
+                const div = document.createElement('div');
+                div.className = 'activity-item';
+                div.innerHTML = `<img src="${activity.image}" alt="Imagem">
+                                 <p>${activity.name}</p>`;
+                const viewButton = document.createElement('button');
+                viewButton.textContent = 'Ver História';
+                viewButton.onclick = () => viewStory(activity);
+                div.appendChild(viewButton);
+                activityList.appendChild(div);
             });
-        } catch (error) {
-            console.error("Erro ao carregar atividades:", error);
-            activityList.innerHTML = "<p>Erro ao carregar atividades.</p>";
+            showPage('activitiesPage');
         }
-    }
-</script>
+
+        // Função para visualizar história completa
+        function viewStory(activity) {
+            document.getElementById('storyImage').src = activity.image;
+            document.getElementById('storyName').textContent = activity.name;
+            document.getElementById('storyContent').textContent = activity.story;
+            showPage('viewStoryPage');
+        }
+    </script>
 </body>
 </html>
