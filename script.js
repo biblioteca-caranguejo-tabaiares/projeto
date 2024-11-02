@@ -1,5 +1,4 @@
-<script>
-    // Função para carregar a galeria de imagens
+// Função para carregar a galeria de imagens
     function loadGallery() {
         const gallery = document.getElementById('gallery');
         gallery.innerHTML = ''; // Limpa a galeria antes de carregar
@@ -135,4 +134,48 @@
             document.getElementById('storyContent').textContent = activity.story;
             showPage('viewStoryPage');
         }
-    </script>
+async function saveActivity(imageId) {
+    const name = document.getElementById("nome").value;
+    const story = prompt("Escreva sua história para a imagem " + imageId + ":");
+    if (story) {
+        try {
+            await db.collection("activities").add({
+                name: name,
+                imageId: imageId,
+                story: story,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            alert("Atividade salva com sucesso!");
+        } catch (error) {
+            console.error("Erro ao salvar atividade:", error);
+        }
+    }
+}
+
+async function showActivities() {
+    showPage("activitiesPage");
+    const activityList = document.getElementById("activityList");
+    activityList.innerHTML = "";
+
+    try {
+        const snapshot = await db.collection("activities").orderBy("timestamp", "desc").get();
+        if (snapshot.empty) {
+            activityList.innerHTML = "<p>Nenhuma atividade realizada.</p>";
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const activity = doc.data();
+            const item = document.createElement("div");
+            item.classList.add("activity-item");
+            item.innerHTML = `
+                <p><strong>${activity.name}</strong> - Imagem ${activity.imageId}</p>
+                <p>${activity.story}</p>
+            `;
+            activityList.appendChild(item);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar atividades:", error);
+        activityList.innerHTML = "<p>Erro ao carregar atividades.</p>";
+    }
+}
